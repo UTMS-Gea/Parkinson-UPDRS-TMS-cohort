@@ -9,7 +9,7 @@ library(robustlmm)
 library(emmeans)
 library(lmerTest)
 
-fpath <- "~/R/data_UDPRS_TMS/"
+fpath <- paste(getwd(),"/Parkinson-UPDRS-TMS-cohort-main/data_UDPRS_TMS/",sep = "")
 TMStable <- read.table(file = paste(fpath,"TMS.csv",sep = ""), sep = ",", header = TRUE)
 TMStable$Period <- factor(TMStable$Period)
 TMStable$ID <- factor(TMStable$ID , levels=as.character(1:22))

@@ -8,6 +8,8 @@ if (!requireNamespace("lme4", quietly = TRUE)) install.packages("lme4")
 if (!requireNamespace("robustlmm", quietly = TRUE)) install.packages("robustlmm")
 if (!requireNamespace("emmeans", quietly = TRUE)) install.packages("emmeans")
 if (!requireNamespace("lmerTest", quietly = TRUE)) install.packages("lmerTest")
+if (!requireNamespace("minpack.lm", quietly = TRUE)) install.packages("minpack.lm")
+if (!requireNamespace("rmcorr", quietly = TRUE)) install.packages("rmcorr")
 
 library(ggpubr)
 library(rstatix)
@@ -21,7 +23,7 @@ library(emmeans)
 library(lmerTest)
 
 ### Load table ###
-fpath <- "~/R/data_UDPRS_TMS/"
+fpath <- paste(getwd(),"/Parkinson-UPDRS-TMS-cohort-main/data_UDPRS_TMS/",sep = "")
 UPDRStable <- read.table(file = paste(fpath,"UPDRS.csv",sep = ""), sep = ",", header = TRUE)
 UPDRStable$Period <- factor(UPDRStable$Period)
 UPDRStable$ID <- factor(UPDRStable$ID , levels=as.character(1:22))

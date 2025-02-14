@@ -8,7 +8,7 @@ library(lme4)
 library(emmeans)
 library(minpack.lm)
 
-fpath <- "~/R/data_UDPRS_TMS/"
+fpath <- paste(getwd(),"/Parkinson-UPDRS-TMS-cohort-main/data_UDPRS_TMS/",sep = "")
 RCtable <- read.table(file = paste(fpath,"IOCurves.csv",sep = ""), sep = ",", header = TRUE)
 RCtable$Period <- factor(RCtable$Period)
 RCtable$ID <- factor(RCtable$ID)
