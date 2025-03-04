@@ -97,18 +97,24 @@ This sequence ensures that all required libraries are loaded and that necessary 
 
 ---
 ## License
-[Specify the license, e.g., MIT License, GPL-3.0, etc.]
+MIT License (For R Scripts)
+CC-BY-NC 4.0 License (For Dataset)
 
 ## Citation
 If you use this dataset or code, please cite the corresponding article:
-> [Insert full citation details here]
+> [Citation pending.]
 
 ---
 ## Contact
 For questions or clarifications, please contact:
-[Your Name]  
-[Your Email]  
-[Your Institution]  
+
+> *Oscar Arias-Carrion*
+ariasemc2@gmail.com
+Hospital General Dr. Manuel Gea González
+
+> *Emmanuel Ortega-Robles*
+emmanuel.ortega@salud.gob.mx
+Hospital General Dr. Manuel Gea González
 
 ---
 ### Acknowledgments
