@@ -1,13 +1,4 @@
-library(ggpubr)
-library(rstatix)
-library(tidyr)
-library(ggprism)
-library(cowplot)
-library(car)
-library(lme4)
-library(emmeans)
-library(minpack.lm)
-
+### Loads the data and creates data frames for the analysis ###
 fpath <- paste(getwd(),"/Parkinson-UPDRS-TMS-cohort-main/data_UDPRS_TMS/",sep = "")
 RCtable <- read.table(file = paste(fpath,"IOCurves.csv",sep = ""), sep = ",", header = TRUE)
 RCtable$Period <- factor(RCtable$Period)
@@ -56,7 +47,7 @@ T1_All <- ggerrorplot(RCtableT1, x="Intensity", y="Amplitude", desc_stat = "mean
   scale_y_continuous(breaks = seq(0,9,2), minor_breaks = seq(0,9,1)) +
   coord_cartesian(ylim = c(0, 9)) +
   scale_x_discrete(breaks = seq(100, 180, by = 20), labels = seq(100, 180, by = 20)) +
-  scale_color_manual(name = "Hemisphere", labels = c("Least affected","Most affected"), values = c(colorA1, colorA2)) +
+  scale_color_manual(name = "Hemisphere", labels = c("Less affected","More affected"), values = c(colorA1, colorA2)) +
   theme_prism() +
   theme(axis.text.x = element_text(angle = 45, size = 12), axis.text.y = element_text(size = 12), axis.title.x = element_text(size = 12), axis.title.y = element_text(size = 12)) +
   theme(plot.margin = unit(c(1,1,1,0), "lines"), legend.position = "none") +
@@ -96,7 +87,7 @@ T2_All <- ggerrorplot(RCtableT2, x="Intensity", y="Amplitude", desc_stat = "mean
   scale_y_continuous(breaks = seq(0,9,2), minor_breaks = seq(0,9,1)) +
   coord_cartesian(ylim = c(0, 9)) +
   scale_x_discrete(breaks = seq(100, 180, by = 20), labels = seq(100, 180, by = 20)) +
-  scale_color_manual(name = "Hemisphere", labels = c("Least affected","Most affected"), values = c(colorA1, colorA2)) +
+  scale_color_manual(name = "Hemisphere", labels = c("Less affected","More affected"), values = c(colorA1, colorA2)) +
   theme_prism() +
   theme(axis.text.x = element_text(angle = 45, size = 12), axis.text.y = element_text(size = 12), axis.title.x = element_text(size = 12), axis.title.y = element_text(size = 12)) +
   theme(plot.margin = unit(c(1,1,1,0), "lines"), legend.position = "none") +
@@ -136,7 +127,7 @@ T4_All <- ggerrorplot(RCtableT4, x="Intensity", y="Amplitude", desc_stat = "mean
   scale_y_continuous(breaks = seq(0,9,2), minor_breaks = seq(0,9,1)) +
   coord_cartesian(ylim = c(0, 9)) +
   scale_x_discrete(breaks = seq(100, 180, by = 20), labels = seq(100, 180, by = 20)) +
-  scale_color_manual(name = "Hemisphere", labels = c("Least affected","Most affected"), values = c(colorA1, colorA2)) +
+  scale_color_manual(name = "Hemisphere", labels = c("Less affected","More affected"), values = c(colorA1, colorA2)) +
   theme_prism() +
   theme(axis.text.x = element_text(angle = 45, size = 12), axis.text.y = element_text(size = 12), axis.title.x = element_text(size = 12), axis.title.y = element_text(size = 12)) +
   theme(plot.margin = unit(c(1,1,1,0), "lines"), legend.position = "none") +
@@ -176,7 +167,7 @@ T5_All <- ggerrorplot(RCtableT5, x="Intensity", y="Amplitude", desc_stat = "mean
   scale_y_continuous(breaks = seq(0,9,2), minor_breaks = seq(0,9,1)) +
   coord_cartesian(ylim = c(0, 9)) +
   scale_x_discrete(breaks = seq(100, 180, by = 20), labels = seq(100, 180, by = 20)) +
-  scale_color_manual(name = "Hemisphere", labels = c("Least affected","Most affected"), values = c(colorA1, colorA2)) +
+  scale_color_manual(name = "Hemisphere", labels = c("Less affected","More affected"), values = c(colorA1, colorA2)) +
   theme_prism() +
   theme(axis.text.x = element_text(angle = 45, size = 12), axis.text.y = element_text(size = 12), axis.title.x = element_text(size = 12), axis.title.y = element_text(size = 12)) +
   theme(plot.margin = unit(c(1,1,1,0), "lines"), legend.position = "none") +
@@ -220,7 +211,7 @@ T1_e <- ggerrorplot(RCtableT1, x="Intensity", y="Amplitude", desc_stat = "mean_c
   scale_y_continuous(breaks = seq(0,9,2), minor_breaks = seq(0,9,1)) +
   coord_cartesian(ylim = c(0, 9)) +
   scale_x_discrete(breaks = seq(100, 180, by = 20), labels = seq(100, 180, by = 20)) +
-  scale_color_manual(name = "Hemisphere", labels = c("Least affected","Most affected"), values = c(colorB1, colorB2)) +
+  scale_color_manual(name = "Hemisphere", labels = c("Less affected","More affected"), values = c(colorB1, colorB2)) +
   theme_prism() +
   theme(axis.text.x = element_text(angle = 45, size = 12), axis.text.y = element_text(size = 12), axis.title.x = element_text(size = 12), axis.title.y = element_text(size = 12)) +
   theme(plot.margin = unit(c(1,1,1,0), "lines"), legend.position = "none") +
@@ -260,7 +251,7 @@ T2_e <- ggerrorplot(RCtableT2, x="Intensity", y="Amplitude", desc_stat = "mean_c
   scale_y_continuous(breaks = seq(0,9,2), minor_breaks = seq(0,9,1)) +
   coord_cartesian(ylim = c(0, 9)) +
   scale_x_discrete(breaks = seq(100, 180, by = 20), labels = seq(100, 180, by = 20)) +
-  scale_color_manual(name = "Hemisphere", labels = c("Least affected","Most affected"), values = c(colorB1, colorB2)) +
+  scale_color_manual(name = "Hemisphere", labels = c("Less affected","More affected"), values = c(colorB1, colorB2)) +
   theme_prism() +
   theme(axis.text.x = element_text(angle = 45, size = 12), axis.text.y = element_text(size = 12), axis.title.x = element_text(size = 12), axis.title.y = element_text(size = 12)) +
   theme(plot.margin = unit(c(1,1,1,0), "lines"), legend.position = "none") +
@@ -300,7 +291,7 @@ T4_e <- ggerrorplot(RCtableT4, x="Intensity", y="Amplitude", desc_stat = "mean_c
   scale_y_continuous(breaks = seq(0,9,2), minor_breaks = seq(0,9,1)) +
   coord_cartesian(ylim = c(0, 9)) +
   scale_x_discrete(breaks = seq(100, 180, by = 20), labels = seq(100, 180, by = 20)) +
-  scale_color_manual(name = "Hemisphere", labels = c("Least affected","Most affected"), values = c(colorB1, colorB2)) +
+  scale_color_manual(name = "Hemisphere", labels = c("Less affected","More affected"), values = c(colorB1, colorB2)) +
   theme_prism() +
   theme(axis.text.x = element_text(angle = 45, size = 12), axis.text.y = element_text(size = 12), axis.title.x = element_text(size = 12), axis.title.y = element_text(size = 12)) +
   theme(plot.margin = unit(c(1,1,1,0), "lines"), legend.position = "none") +
@@ -340,7 +331,7 @@ T5_e <- ggerrorplot(RCtableT5, x="Intensity", y="Amplitude", desc_stat = "mean_c
   scale_y_continuous(breaks = seq(0,9,2), minor_breaks = seq(0,9,1)) +
   coord_cartesian(ylim = c(0, 9)) +
   scale_x_discrete(breaks = seq(100, 180, by = 20), labels = seq(100, 180, by = 20)) +
-  scale_color_manual(name = "Hemisphere", labels = c("Least affected","Most affected"), values = c(colorB1, colorB2)) +
+  scale_color_manual(name = "Hemisphere", labels = c("Less affected","More affected"), values = c(colorB1, colorB2)) +
   theme_prism() +
   theme(axis.text.x = element_text(angle = 45, size = 12), axis.text.y = element_text(size = 12), axis.title.x = element_text(size = 12), axis.title.y = element_text(size = 12)) +
   theme(plot.margin = unit(c(1,1,1,0), "lines"), legend.position = "none") +
@@ -384,7 +375,7 @@ T1_a <- ggerrorplot(RCtableT1, x="Intensity", y="Amplitude", desc_stat = "mean_c
   scale_y_continuous(breaks = seq(0,9,2), minor_breaks = seq(0,9,1)) +
   coord_cartesian(ylim = c(0, 9)) +
   scale_x_discrete(breaks = seq(100, 180, by = 20), labels = seq(100, 180, by = 20)) +
-  scale_color_manual(name = "Hemisphere", labels = c("Least affected","Most affected"), values = c(colorC1, colorC2)) +
+  scale_color_manual(name = "Hemisphere", labels = c("Less affected","More affected"), values = c(colorC1, colorC2)) +
   theme_prism() +
   theme(axis.text.x = element_text(angle = 45, size = 12), axis.text.y = element_text(size = 12), axis.title.x = element_text(size = 12), axis.title.y = element_text(size = 12)) +
   theme(plot.margin = unit(c(1,1,1,0), "lines"), legend.position = "none") +
@@ -424,7 +415,7 @@ T2_a <- ggerrorplot(RCtableT2, x="Intensity", y="Amplitude", desc_stat = "mean_c
   scale_y_continuous(breaks = seq(0,9,2), minor_breaks = seq(0,9,1)) +
   coord_cartesian(ylim = c(0, 9)) +
   scale_x_discrete(breaks = seq(100, 180, by = 20), labels = seq(100, 180, by = 20)) +
-  scale_color_manual(name = "Hemisphere", labels = c("Least affected","Most affected"), values = c(colorC1, colorC2)) +
+  scale_color_manual(name = "Hemisphere", labels = c("Less affected","More affected"), values = c(colorC1, colorC2)) +
   theme_prism() +
   theme(axis.text.x = element_text(angle = 45, size = 12), axis.text.y = element_text(size = 12), axis.title.x = element_text(size = 12), axis.title.y = element_text(size = 12)) +
   theme(plot.margin = unit(c(1,1,1,0), "lines"), legend.position = "none") +
@@ -464,7 +455,7 @@ T4_a <- ggerrorplot(RCtableT4, x="Intensity", y="Amplitude", desc_stat = "mean_c
   scale_y_continuous(breaks = seq(0,9,2), minor_breaks = seq(0,9,1)) +
   coord_cartesian(ylim = c(0, 9)) +
   scale_x_discrete(breaks = seq(100, 180, by = 20), labels = seq(100, 180, by = 20)) +
-  scale_color_manual(name = "Hemisphere", labels = c("Least affected","Most affected"), values = c(colorC1, colorC2)) +
+  scale_color_manual(name = "Hemisphere", labels = c("Less affected","More affected"), values = c(colorC1, colorC2)) +
   theme_prism() +
   theme(axis.text.x = element_text(angle = 45, size = 12), axis.text.y = element_text(size = 12), axis.title.x = element_text(size = 12), axis.title.y = element_text(size = 12)) +
   theme(plot.margin = unit(c(1,1,1,0), "lines"), legend.position = "none") +
@@ -504,7 +495,7 @@ T5_a <- ggerrorplot(RCtableT5, x="Intensity", y="Amplitude", desc_stat = "mean_c
   scale_y_continuous(breaks = seq(0,9,2), minor_breaks = seq(0,9,1)) +
   coord_cartesian(ylim = c(0, 9)) +
   scale_x_discrete(breaks = seq(100, 180, by = 20), labels = seq(100, 180, by = 20)) +
-  scale_color_manual(name = "Hemisphere", labels = c("Least affected","Most affected"), values = c(colorC1, colorC2)) +
+  scale_color_manual(name = "Hemisphere", labels = c("Less affected","More affected"), values = c(colorC1, colorC2)) +
   theme_prism() +
   theme(axis.text.x = element_text(angle = 45, size = 12), axis.text.y = element_text(size = 12), axis.title.x = element_text(size = 12), axis.title.y = element_text(size = 12)) +
   theme(plot.margin = unit(c(1,1,1,0), "lines"), legend.position = "none") +
@@ -526,7 +517,7 @@ L1 <- ggdraw() + draw_label("All PD", fontface = 'bold', size = 18, angle = 90, 
 L2 <- ggdraw() + draw_label("Early PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = colorB)
 L3 <- ggdraw() + draw_label("Advanced PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = colorC)
 
-# Fig. 4: 1000x1000
+# Fig. 3: 1000x1000
 plot_grid(NULL, t1, t2, t4, t5,
           L1, T1_All, T2_All, T4_All, T5_All, 
           L2, T1_e, T2_e, T4_e, T5_e, 

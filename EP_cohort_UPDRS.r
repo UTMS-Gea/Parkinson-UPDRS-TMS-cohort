@@ -21,6 +21,8 @@ library(lme4)
 library(robustlmm)
 library(emmeans)
 library(lmerTest)
+library(minpack.lm)
+library(rmcorr)
 
 ### Load table ###
 fpath <- paste(getwd(),"/Parkinson-UPDRS-TMS-cohort-main/data_UDPRS_TMS/",sep = "")
@@ -238,7 +240,7 @@ pP3_MASa <- plot_UPDRS(dataset = UPDRStable_aPD, metric = P3_MAS, model = mod_P3
 pP3_LASa <- plot_UPDRS(dataset = UPDRStable_aPD, metric = P3_LAS, model = mod_P3LASa, strTitle = "", color3, c(50,10,5))# c(50,10,5)
 pAIa <- plot_UPDRS(dataset = UPDRStable_aPD, metric = AI, model = mod_AIa, strTitle = "", color3, c(1,0.2,0.1))
 
-# Fig. 2: 1500 x 1200
+# Fig. 1: 1500 x 1200
 t1 <- ggdraw() + draw_label("UPDRS - Part I", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
 t2 <- ggdraw() + draw_label("UPDRS - Part II", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
 t3 <- ggdraw() + draw_label("UPDRS - Part III", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
@@ -255,8 +257,8 @@ plot_grid(NULL, t1, t2, t3, t4,
 # Sup. Fig. 1: 1500 x 1200
 t1 <- ggdraw() + draw_label("UPDRS - Part III\n(upper limbs)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
 t2 <- ggdraw() + draw_label("UPDRS - Part III\n(lower limbs)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
-t3 <- ggdraw() + draw_label("UPDRS - Part III\n(most affected side)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
-t4 <- ggdraw() + draw_label("UPDRS - Part III\n(least affected side)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t3 <- ggdraw() + draw_label("UPDRS - Part III\n(more affected side)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t4 <- ggdraw() + draw_label("UPDRS - Part III\n(less affected side)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
 L1 <- ggdraw() + draw_label("All PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = color1)
 L2 <- ggdraw() + draw_label("Early PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = color2)
 L3 <- ggdraw() + draw_label("Advanced PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = color3)

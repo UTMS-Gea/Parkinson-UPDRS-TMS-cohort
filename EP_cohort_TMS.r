@@ -1,14 +1,4 @@
-library(ggpubr)
-library(rstatix)
-library(tidyr)
-library(ggprism)
-library(cowplot)
-library(car)
-library(lme4)
-library(robustlmm)
-library(emmeans)
-library(lmerTest)
-
+### Loads the data and creates data frames for the analysis ###
 fpath <- paste(getwd(),"/Parkinson-UPDRS-TMS-cohort-main/data_UDPRS_TMS/",sep = "")
 TMStable <- read.table(file = paste(fpath,"TMS.csv",sep = ""), sep = ",", header = TRUE)
 TMStable$Period <- factor(TMStable$Period)
@@ -299,11 +289,11 @@ psilAIa <- plot_TMS(dataset = TMStable_aPD, metric = silAI, model = mod_silAIa, 
 pampAIa <- plot_TMS(dataset = TMStable_aPD, metric = ampAI, model = mod_ampAIa, strTitle = "", yLabel = "Index", color3, c(-1,1,0.5,0.25))
 
 
-# Fig. 3: 1500 x 1200
-t1 <- ggdraw() + draw_label("Resting Motor Threshold\n(Most affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
-t2 <- ggdraw() + draw_label("Resting Motor Threshold\n(Least affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
-t3 <- ggdraw() + draw_label("Cortical Silent Period\n(Most affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
-t4 <- ggdraw() + draw_label("Cortical Silent Period\n(Least affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+# Fig. 2: 1500 x 1200
+t1 <- ggdraw() + draw_label("Resting Motor Threshold\n(More affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t2 <- ggdraw() + draw_label("Resting Motor Threshold\n(Less affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t3 <- ggdraw() + draw_label("Cortical Silent Period\n(More affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t4 <- ggdraw() + draw_label("Cortical Silent Period\n(Less affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
 L1 <- ggdraw() + draw_label("All PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = color1)
 L2 <- ggdraw() + draw_label("Early PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = color2)
 L3 <- ggdraw() + draw_label("Advanced PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = color3)
@@ -314,10 +304,10 @@ plot_grid(NULL, t1, t2, t3, t4,
           ncol = 5, rel_heights = c(0.15,1,1,1), rel_widths = c(0.1,1,1,1,1))
 
 # Sup. Fig. 2: 1500 x 1200
-t1 <- ggdraw() + draw_label("Latency\n(Most affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
-t2 <- ggdraw() + draw_label("Latency\n(Least affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
-t3 <- ggdraw() + draw_label("Duration\n(Most affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
-t4 <- ggdraw() + draw_label("Duration\n(Least affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t1 <- ggdraw() + draw_label("Latency\n(More affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t2 <- ggdraw() + draw_label("Latency\n(Less affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t3 <- ggdraw() + draw_label("Duration\n(More affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t4 <- ggdraw() + draw_label("Duration\n(Less affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
 L1 <- ggdraw() + draw_label("All PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = color1)
 L2 <- ggdraw() + draw_label("Early PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = color2)
 L3 <- ggdraw() + draw_label("Advanced PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = color3)
@@ -328,10 +318,10 @@ plot_grid(NULL, t1, t2, t3, t4,
           ncol = 5, rel_heights = c(0.15,1,1,1), rel_widths = c(0.1,1,1,1,1))
 
 # Sup. Fig. 3: 1500 x 1200
-t1 <- ggdraw() + draw_label("MEP Amplitude @130%rMT\n(Most affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
-t2 <- ggdraw() + draw_label("MEP Amplitude @130%rMT\n(Least affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
-t3 <- ggdraw() + draw_label("Area Under the Curve\n(Most affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
-t4 <- ggdraw() + draw_label("Area Under the Curve\n(Least affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t1 <- ggdraw() + draw_label("MEP Amplitude @130%rMT\n(More affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t2 <- ggdraw() + draw_label("MEP Amplitude @130%rMT\n(Less affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t3 <- ggdraw() + draw_label("Area Under the Curve\n(More affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
+t4 <- ggdraw() + draw_label("Area Under the Curve\n(Less affected hemisphere)", fontface = 'bold', size = 18, hjust = 0.5, vjust = 0.5)
 L1 <- ggdraw() + draw_label("All PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = color1)
 L2 <- ggdraw() + draw_label("Early PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = color2)
 L3 <- ggdraw() + draw_label("Advanced PD", fontface = 'bold', size = 18, angle = 90, hjust = 0.5, vjust = 0.5, color = color3)

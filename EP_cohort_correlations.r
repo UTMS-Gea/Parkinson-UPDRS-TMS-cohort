@@ -1,8 +1,4 @@
-library(rmcorr)
-library(rstatix)
-library(tidyr)
-
-# Data Frames
+### Creates data frames for the analysis ###
 corr_frame <- data.frame(Subject = as.numeric(TMStable$ID), 
                          P3 = UPDRStable$P3, 
                          P3_UL = UPDRStable$P3UL, 
