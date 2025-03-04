@@ -97,8 +97,7 @@ This sequence ensures that all required libraries are loaded and that necessary 
 
 ---
 ## License
-MIT License (For R Scripts)
-CC-BY-NC 4.0 License (For Dataset)
+MIT License (For R Scripts), CC-BY-NC 4.0 License (For Dataset)
 
 ## Citation
 If you use this dataset or code, please cite the corresponding article:
@@ -108,13 +107,9 @@ If you use this dataset or code, please cite the corresponding article:
 ## Contact
 For questions or clarifications, please contact:
 
-> *Oscar Arias-Carrion*
-ariasemc2@gmail.com
-Hospital General Dr. Manuel Gea González
+> *Oscar Arias-Carrion* (ariasemc2@gmail.com). Hospital General Dr. Manuel Gea González.
 
-> *Emmanuel Ortega-Robles*
-emmanuel.ortega@salud.gob.mx
-Hospital General Dr. Manuel Gea González
+> *Emmanuel Ortega-Robles* (emmanuel.ortega@salud.gob.mx). Hospital General Dr. Manuel Gea González.
 
 ---
 ### Acknowledgments
